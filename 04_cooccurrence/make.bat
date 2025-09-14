@@ -101,6 +101,7 @@ python %MERGE_PHRASES_PY% ^
 rename ^
     %MERGED_AOZORA_PHRASES_DIR%\*.%INTERMEDIATE_AOZORA_PHRASES_DIR% ^
     *.merged_phrases
+
 rem 1min
 time /t
 rmdir /s /q %WIKIPEDIA_NPMI_DIR%
