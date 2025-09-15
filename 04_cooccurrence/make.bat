@@ -9,7 +9,7 @@ set MERGE_PHRASES_PY=%COLLECT_PHRASES_BASE%\hasune.merge_phrases.py
 set CALCULATE_NPMI_BASE=%HASUNE_BASE%\utility\cooccurrence\calculate_npmi
 set CALCULATE_NPMI_PY=%CALCULATE_NPMI_BASE%\hasune.calculate_npmi.py
 set COMPOUND_WORDS_BASE=%HASUNE_BASE%\utility\cooccurrence\compound_words
-set COMPOUND_WORDS_PY=%COMPOUND_WORDS_BASE%\hasune.compound_words.py
+set EXTRACT_COMPOUND_WORDS_PY=%COMPOUND_WORDS_BASE%\hasune.extract_compound_words.py
 
 set WIKIPEDIA_MORPHEMES_DIR=..\02_corpus\wikipedia\hasune_pos
 set WIKIPEDIA_PHRASES_DIR=wikipedia_phrases
@@ -26,6 +26,7 @@ set AOZORA_NPMI_DIR=aozora_npmi
 set SHORT_UNIT_LEXICON=..\01_dictionary_content_1\dictionary_source\unidic.expanded.lexicon
 set WIKIPEDIA_COMPOUND_WORDS_DIR=wikipedia_compound_words
 set AOZORA_COMPOUND_WORDS_DIR=aozora_compound_words
+set MERGED_COMPOUND_WORDS_DIR=merged_compound_words
 
 rem rem 19min
 rem time /t
@@ -135,13 +136,13 @@ rem <1min
 time /t
 rmdir /s /q %WIKIPEDIA_COMPOUND_WORDS_DIR%
 mkdir %WIKIPEDIA_COMPOUND_WORDS_DIR%
-echo python %COMPOUND_WORDS_PY% ^
+echo python %EXTRACT_COMPOUND_WORDS_PY% ^
     %WIKIPEDIA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\rest_phrase.npmi
-python %COMPOUND_WORDS_PY% ^
+python %EXTRACT_COMPOUND_WORDS_PY% ^
     %WIKIPEDIA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
@@ -153,13 +154,13 @@ rem <1min
 time /t
 rmdir /s /q %AOZORA_COMPOUND_WORDS_DIR%
 mkdir %AOZORA_COMPOUND_WORDS_DIR%
-echo python %COMPOUND_WORDS_PY% ^
+echo python %EXTRACT_COMPOUND_WORDS_PY% ^
     %AOZORA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
     %AOZORA_COMPOUND_WORDS_DIR%\rest_phrase.npmi
-python %COMPOUND_WORDS_PY% ^
+python %EXTRACT_COMPOUND_WORDS_PY% ^
     %AOZORA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
