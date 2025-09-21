@@ -1,0 +1,52 @@
+@echo off
+
+setlocal
+set HASUNE_BASE=C:\data\programs\hasune.rs
+set ADJUST_FREQUENCIES_BASE=%HASUNE_BASE%\utility\word_frequency\adjust_frequencies
+set BLEND_FREQUENCIES_PY=%ADJUST_FREQUENCIES_BASE%\hasune.blend_frequencies.py
+set AMPLIFY_FREQUENCIES_PY=%ADJUST_FREQUENCIES_BASE%\hasune.amplify_frequencies.py
+
+set MERGED_WIKIPEDIA_FREQUENCIES_DIR=..\03_word_frequency_1\merged_wikipedia_frequencies
+set MERGED_AOZORA_FREQUENCIES_DIR=..\03_word_frequency_1\merged_aozora_frequencies
+rem WIKIPEDIA=5.97GB, AOZORA=292MB
+set WIKIPEDIA_RATIO=1
+set AOZORA_RATIO=20
+set BLENDED_FREQUENCIES_DIR=blended_frequencies
+set FREQ_MAGNIFICATIONS_TXT=%ADJUST_FREQUENCIES_BASE%\data\freq_magnifications.txt
+set AMPLIFIED_FREQUENCIES_DIR=amplified_frequencies
+
+rem <1min
+time /t
+rmdir /s /q %BLENDED_FREQUENCIES_DIR%
+mkdir %BLENDED_FREQUENCIES_DIR%
+echo python %BLEND_FREQUENCIES_PY% ^
+    %MERGED_WIKIPEDIA_FREQUENCIES_DIR% ^
+    %WIKIPEDIA_RATIO% ^
+    %MERGED_AOZORA_FREQUENCIES_DIR% ^
+    %AOZORA_RATIO% ^
+    %BLENDED_FREQUENCIES_DIR%
+python %BLEND_FREQUENCIES_PY% ^
+    %MERGED_WIKIPEDIA_FREQUENCIES_DIR% ^
+    %WIKIPEDIA_RATIO% ^
+    %MERGED_AOZORA_FREQUENCIES_DIR% ^
+    %AOZORA_RATIO% ^
+    %BLENDED_FREQUENCIES_DIR% ^
+    || exit /b
+
+rem <1min
+time /t
+rmdir /s /q %AMPLIFIED_FREQUENCIES_DIR%
+mkdir %AMPLIFIED_FREQUENCIES_DIR%
+echo python %AMPLIFY_FREQUENCIES_PY% ^
+    %FREQ_MAGNIFICATIONS_TXT% ^
+    %BLENDED_FREQUENCIES_DIR% ^
+    %AMPLIFIED_FREQUENCIES_DIR%
+python %AMPLIFY_FREQUENCIES_PY% ^
+    %FREQ_MAGNIFICATIONS_TXT% ^
+    %BLENDED_FREQUENCIES_DIR% ^
+    %AMPLIFIED_FREQUENCIES_DIR% ^
+    || exit /b
+
+time /t
+echo FINISHED!
+exit /b 0
