@@ -10,6 +10,7 @@ set CALCULATE_NPMI_BASE=%HASUNE_BASE%\utility\cooccurrence\calculate_npmi
 set CALCULATE_NPMI_PY=%CALCULATE_NPMI_BASE%\hasune.calculate_npmi.py
 set COMPOUND_WORDS_BASE=%HASUNE_BASE%\utility\cooccurrence\compound_words
 set EXTRACT_COMPOUND_WORDS_PY=%COMPOUND_WORDS_BASE%\hasune.extract_compound_words.py
+set MERGE_COMPOUND_WORDS_PY=%COMPOUND_WORDS_BASE%\hasune.merge_compound_words.py
 
 set WIKIPEDIA_MORPHEMES_DIR=..\02_corpus\wikipedia\hasune_pos
 set WIKIPEDIA_PHRASES_DIR=wikipedia_phrases
@@ -166,6 +167,20 @@ python %EXTRACT_COMPOUND_WORDS_PY% ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
     %AOZORA_COMPOUND_WORDS_DIR%\rest_phrase.npmi ^
+    || exit /b 1
+
+rem <1min
+time /t
+rmdir /s /q %MERGED_COMPOUND_WORDS_DIR%
+mkdir %MERGED_COMPOUND_WORDS_DIR%
+echo python %MERGE_COMPOUND_WORDS_PY% ^
+    %MERGED_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
+    %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
+    %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon
+python %MERGE_COMPOUND_WORDS_PY% ^
+    %MERGED_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
+    %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
+    %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
     || exit /b 1
 
 time /t
