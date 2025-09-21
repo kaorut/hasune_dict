@@ -141,13 +141,13 @@ echo python %EXTRACT_COMPOUND_WORDS_PY% ^
     %WIKIPEDIA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
-    %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
+    %WIKIPEDIA_COMPOUND_WORDS_DIR%\word.merged_frequencies ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\rest_phrase.npmi
 python %EXTRACT_COMPOUND_WORDS_PY% ^
     %WIKIPEDIA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
-    %WIKIPEDIA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
+    %WIKIPEDIA_COMPOUND_WORDS_DIR%\word.merged_frequencies ^
     %WIKIPEDIA_COMPOUND_WORDS_DIR%\rest_phrase.npmi ^
     || exit /b 1
 
@@ -159,13 +159,13 @@ echo python %EXTRACT_COMPOUND_WORDS_PY% ^
     %AOZORA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
-    %AOZORA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
+    %AOZORA_COMPOUND_WORDS_DIR%\word.merged_frequencies ^
     %AOZORA_COMPOUND_WORDS_DIR%\rest_phrase.npmi
 python %EXTRACT_COMPOUND_WORDS_PY% ^
     %AOZORA_NPMI_DIR%\phrase.npmi ^
     %SHORT_UNIT_LEXICON% ^
     %AOZORA_COMPOUND_WORDS_DIR%\compound_word.lexicon ^
-    %AOZORA_COMPOUND_WORDS_DIR%\compound_word.frequencies ^
+    %AOZORA_COMPOUND_WORDS_DIR%\word.merged_frequencies ^
     %AOZORA_COMPOUND_WORDS_DIR%\rest_phrase.npmi ^
     || exit /b 1
 
