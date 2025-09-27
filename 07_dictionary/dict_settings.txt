@@ -1,0 +1,13 @@
+{
+    "header": {
+        "version":     [ 1, 0, 0 ],
+        "description": "hasune main dictionary",
+        "copyright":   "Copyright (C) 2025 kaoru  https://www.tetengo.org/"
+    },
+    "body": {
+        "input_index":       "..\\05_dictionary_content_2\\dictionary_content\\main.input_index",
+        "record_list":       "..\\05_dictionary_content_2\\dictionary_content\\main.record_list",
+        "word_unicost_list": "dictionary_content\\main.word_unicost_list.cost_assigned",
+        "pos_bicost_list":   "dictionary_content\\main.pos_bicost_list.cost_assigned"
+    }
+}
