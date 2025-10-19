@@ -7,7 +7,7 @@
     "body": {
         "input_index":       "..\\05_dictionary_content_2\\dictionary_content\\main.input_index",
         "record_list":       "..\\05_dictionary_content_2\\dictionary_content\\main.record_list",
-        "word_unicost_list": "dictionary_content\\main.word_unicost_list.cost_assigned",
-        "pos_bicost_list":   "dictionary_content\\main.pos_bicost_list.cost_assigned"
+        "word_unicost_list": "..\\06_word_frequency_2\\dictionary_content\\main.word_unicost_list.cost_assigned",
+        "pos_bicost_list":   "..\\06_word_frequency_2\\dictionary_content\\main.pos_bicost_list.cost_assigned"
     }
 }
